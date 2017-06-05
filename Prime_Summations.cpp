@@ -16,7 +16,6 @@ int GetLocated(vector<int>& arr, int r);
 
 //this function same with problem "The coin change problem"
 UDLONG GetWays(vector<int>& c, int m, int n){
-
 	UDLONG table[n+1];
 	memset(table, 0, sizeof(table));
 	table[0] = 1;
@@ -34,18 +33,18 @@ bool IsPrime(int number){
 	return true;
 }
 
-//arr is content prime number from 1 to 1000
+//arr is content prime number from 2 to n_prime
 void ArrPrime(vector<int>& arr, int n_prime){
-    arr.push_back(2);
-	for (int i_p = 3; i_p <= n_prime; i_p+=2)
+    	arr.push_back(2);
+   	for (int i_p = 3; i_p <= n_prime; i_p+=2)
 		if (IsPrime(i_p)) arr.push_back(i_p);
 }
 
 int GetLocated(vector<int>& arr, int r){
 	if (r >= 997) return arr.size();
-    int located = 0;
+    	int located = 0;
 	for(;arr[located]<=r;++located)
-        continue;
+        	continue;
 	return located;
 }
 
@@ -57,8 +56,7 @@ int main() {
 	for (int i_r = 0; i_r < T; ++i_r)
 		cin >> r[i_r];
 	ArrPrime(arrPrime, 1000);
-	for (int i = 0; i < T; ++i)
-	{
+	for (int i = 0; i < T; ++i){
 		int arr_size = GetLocated(arrPrime, r[i]);
 		cout << GetWays(arrPrime, arr_size, r[i]) << endl;
 	}
